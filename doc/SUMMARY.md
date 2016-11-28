@@ -1,0 +1,24 @@
+# Summary
+
+- Setup and getting started
+ - [Backend](backend.md)
+ - [Structure](structure.md)
+ - [Config](config.md)
+ - [Proxy](proxy.md)
+ - [Commands](commands.md)
+ - [Assets](assets.md)
+ - [Pre-processors](pre-processors.md)
+ - [Post-processors](post-processors.md)
+ - [Server and SSR](server.md)
+- Code standards
+ - [Async and Await](async-await.md)
+ - [Code splitting](code-splitting.md)
+ - [Data Prefetching](data-prefetching.md)
+ - [Documentation](documentation.md)
+ - [Dependency control](dependency-control.md)
+ - [Targeting code to environments](targeting-code.md)
+ - [Linters](linters.md)
+ - [Naming](naming.md)
+- Testing
+  - [E2E](e2e.md)
+  - [Unit](unit.md)
