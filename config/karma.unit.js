@@ -18,7 +18,7 @@ module.exports = function karmaConfig(config) {
       noInfo: true,
     },
     coverageReporter: {
-      dir: '../test/coverage',
+      dir: '../test/unit/coverage',
       reporters: [
         { type: 'lcov', subdir: '.' },
         { type: 'clover', subdir: '.' },

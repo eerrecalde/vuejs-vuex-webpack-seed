@@ -35,6 +35,7 @@ module.exports = {
     default: createTestLauncher(),
     chrome: createTestLauncher({ browserName: 'chrome' }),
     firefox: createTestLauncher({ browserName: 'firefox' }),
+    phantomjs: createTestLauncher({ browserName: 'phantomjs' }),
   },
 };
 

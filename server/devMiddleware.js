@@ -35,7 +35,6 @@ module.exports = function devMiddleware(app, onServerUpdate, onClientUpdate) {
   serverCompiler.outputFileSystem = fs;
   // On an update to the server bundle push the bundle from memory to the server
   serverCompiler.watch({}, () => {
-    console.log('~~~~~~',fs.readFileSync(path.output.server, 'utf-8'))
     onServerUpdate(fs.readFileSync(path.output.server, 'utf-8'));
   });
   return serverCompiler;

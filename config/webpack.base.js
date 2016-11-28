@@ -16,12 +16,12 @@ module.exports = {
   resolve: {
     // Extensions to support if excluded from path
     extensions: ['', '.js', '.vue', '.scss'],
-    fallback: [path.nodeModules.root],
+    fallback: [path.nodeModules],
     // https://github.com/JSainsburyPLC/vue-webpack/blob/master/template/doc/structure.md#aliases
     alias: path.alias,
   },
   resolveLoader: {
-    fallback: [path.nodeModules.root],
+    fallback: [path.nodeModules],
   },
   // Default loader configuration of vue
   vue: loader(),

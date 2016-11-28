@@ -27,27 +27,15 @@ const renderBundleOptions = {
 let template;
 let renderer;
 if (process.env.NODE_ENV === 'production') {
-  let bundle;
-
-  // Avoid server blowing up when file not found and show friendly message
+  // Handle server error with unbuild files
   try {
+    const bundle = fs.readFileSync(path.output.server);
     template = fs.readFileSync(path.output.index);
+    renderer = createBundleRenderer(bundle, renderBundleOptions);
   } catch (err) {
     if (err.code !== 'ENOENT') throw err;
-    console.log('File not found. Did you build first? \nPlease run the build task: npm run build:server');
-    return;
+    throw new Error('File not found. Did you build first? \nPlease build first: npm run build');
   }
-
-  // Avoid server blowing up when file not found and show friendly message
-  try {
-    bundle = fs.readFileSync(path.output.server);
-  } catch (err) {
-    if (err.code !== 'ENOENT') throw err;
-    console.log('File not found. Did you build first? \nPlease run the build task: npm run build:server');
-    return;
-  }
-
-  renderer = createBundleRenderer(bundle, renderBundleOptions);
 } else {
   devMiddleware(
     app,
@@ -90,7 +78,6 @@ app.get('*', (req, res) => {
   const context = { url: req.url };
   // Start the renderering process
   const renderStream = renderer.renderToStream(context);
-  console.log('renderStream!!!!', renderStream)
   const appStartIndex = template.indexOf('<main id=app></main>');
   let firstChunk = true;
 
@@ -99,7 +86,6 @@ app.get('*', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
 
   renderStream.on('data', chunk => {
-    console.log('renderStream DATA!!!!')
     // Write first chunk and initial state for client side Vuex
     if (firstChunk) {
       res.write(template.slice(0, appStartIndex));
@@ -120,7 +106,6 @@ app.get('*', (req, res) => {
 
   // Completed stream so end with document tail contents
   renderStream.on('end', () => {
-    console.log('renderStream END!!!!')
     res.end(template.slice(appStartIndex + '<main id=app></main>'.length));
   });
 

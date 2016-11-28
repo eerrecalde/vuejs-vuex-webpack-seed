@@ -2,16 +2,11 @@ const { join, posix } = require('path');
 
 const root = join(__dirname, '../');
 const src = join(__dirname, '../src');
-const nodeModules = join(__dirname, '../node_modules');
 
 module.exports = {
   root,
   src,
-  nodeModules: {
-    root: nodeModules,
-    babelNode: join(nodeModules, 'babel-cli/bin/babel-node.js'),
-    nightwatch: join(nodeModules, 'bin/nightwatch'),
-  },
+  nodeModules: join(__dirname, '../node_modules'),
   alias: {
     $vue: 'vue/dist/vue.common.js',
     '@api': join(src, 'api'),
@@ -25,7 +20,6 @@ module.exports = {
     '@router': join(src, 'router'),
     '@store': join(src, 'store'),
     '@style': join(src, 'style'),
-    '@view': join(src, 'view'),
   },
   asset: {
     index: join(src, 'index.html'),

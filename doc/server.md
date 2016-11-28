@@ -10,17 +10,11 @@ This template includes all the necessary code to start using SSR. Below are some
 
 At this point it is assumed that you are using `vuex` and `vue-router`, you must be using these to start with SSR.
 
-## SSR
+## Turning off SSR
 
-To turn on SSR you must set the `VUE_ENV` to `server` in the *server script* in `package.json`.
+To turn off SSR you must set the `VUE_ENV` to `client`.
 
-```json
-  {
-    "scripts": {
-      "server": "VUE_ENV=server node ./server/index.js",
-    },
-  }
-```
+> `VUE_ENV=client npm start` / `VUE_ENV=client NODE_ENV=production npm start`
 
 ## SSR with isomorphic error pages
 

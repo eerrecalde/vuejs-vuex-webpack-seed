@@ -52,7 +52,7 @@ node_modules/
 
 # Test specific #
 #################
-/test/coverage/*
+/test/unit/coverage/*
 /test/e2e/reports/*
 eslint-data
 

@@ -2,7 +2,7 @@
 
 All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/scripts).
 
-### `npm run dev`
+### `npm start`
 
 > Starts a Node.js local development server. See [API Proxying During Development](proxy.md) for more details.
 
@@ -15,11 +15,17 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
 - Automatic Polyfills with `babel-runtime`
 - Easy SSR capabilities out of the box
 
-### `npm run start`
+### `NODE_ENV=production npm start`
 
-> Starts a Node.js local server.
+> Starts a Node.js server.
 
 - Runs production version of server. See [Server and SSR documentation](server.md) for more information.
+
+### `VUE_ENV=client npm start`
+
+> Starts a Node.js server that serves a SPA compliant build.
+
+- Runs SPA version of server. See [Server and SSR documentation](server.md) for more information.
 
 ### `npm run build`
 
@@ -38,19 +44,27 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
 
 > Builds server bundle for SSR
 
-### `npm run lint`
 
-> Run all linters, useful for ci
+### `npm run test`
 
-### `npm run eslint`
+Runs the following commands, useful for CI and running all tests:
+- `npm run test:lint`
+- `npm run test:unit`
+- `npm run test:e2e` - with phantomjs
+
+### `npm run test:lint`
+
+> Run all linters
+
+### `npm run test:lint:eslint`
 
 > Run eslint linter
 
-### `npm run stylelint`
+### `npm run test:lint:stylelint`
 
 > Run stylelint linter
 
-### `npm run unit`
+### `npm run test:unit`
 
 > Run unit tests in PhantomJS with [Karma](http://karma-runner.github.io/0.13/index.html). See [Unit Testing](unit.md) for more details.
 
@@ -59,11 +73,11 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
 - Single run
 - Easy [mock injection](http://vuejs.github.io/vue-loader/workflow/testing-with-mocks.html).
 
-### `npm run unit:dev`
+### `npm run test:unit:dev`
 
-> Same as `npm run unit` but with watching.
+> Same as `npm run test:unit` but with watching.
 
-### `npm run e2e`
+### `npm run test:e2e`
 > Run end-to-end tests if installed with [Nightwatch](http://nightwatchjs.org/). See [End-to-end Testing](e2e.md) for more details.
 
 - Run tests in multiple browsers in parallel.
@@ -71,14 +85,13 @@ All build commands are executed via [NPM Scripts](https://docs.npmjs.com/misc/sc
   - Selenium and chromedriver dependencies automatically handled.
   - Automatically spawns the Selenium server.
 
-### `npm run e2e -- --env firefox`
-> Same as `npm run e2e` however runs in specified browsers see [End-to-end Testing](e2e.md)).
+### `npm run test:e2e -- --env firefox`
+> Same as `npm run test:e2e` however runs in specified browsers see [End-to-end Testing](e2e.md)).
 
-
-### `npm run e2e:saucelabs`
+### `SAUCE_USER=username SAUCE_KEY=key npm run test:e2e`
 
 - run e2e tests with saucelabs
 - adds tunneling support (please request username and key)
-- Please see testing doc for more information
+- Please see e2e doc for more information
 
-`SAUCE_USER=username SAUCE_KEY=key ENTS_ENV={dev,uat,stg,prod} npm run e2e:saucelabs`
+`SAUCE_USER=username SAUCE_KEY=key ENTS_ENV={dev,uat,stg,prod} npm run test:e2e`

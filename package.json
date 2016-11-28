@@ -8,19 +8,17 @@
     "node": "6"
   },
   "scripts": {
-    "server": "VUE_ENV=server node ./server/index.js",
-    "dev": "npm run server",
-    "start": "NODE_ENV=production npm run server",
+    "start": "node ./server/index.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "VUE_ENV=client NODE_ENV=production webpack --config ./config/webpack.client.prod.js --progress --hide-modules && cp -R ./static ./dist",
     "build:server": "VUE_ENV=server NODE_ENV=production webpack --config ./config/webpack.server.js --progress --hide-modules",
-    "unit": "node ./node_modules/karma-cli/bin/karma start ./config/karma.unit.js",
-    "unit:dev": "npm run unit -- --no-single-run",
-    "e2e": "node ./node_modules/.bin/nightwatch --config ./config/nightwatch.e2e.js",
-    "e2e:saucelabs": "node ./script/saucelab.js",
-    "lint": "npm run eslint && npm run stylelint",
-    "eslint": "eslint --no-ignore --ext .js,.vue src test/unit test/e2e script config",
-    "stylelint": "stylelint 'src/**/*.@(?(s)?(a|c)ss|vue|html)' --config ./.stylelintrc.js"
+    "test": "npm run test:lint && npm run test:unit && npm run test:e2e -- --env phantomjs",
+    "test:unit": "node ./node_modules/karma-cli/bin/karma start ./config/karma.unit.js",
+    "test:unit:dev": "npm run test:unit -- --no-single-run",
+    "test:e2e": "node ./script/runner.e2e.js",
+    "test:lint": "npm run test:lint:eslint && npm run test:lint:stylelint",
+    "test:lint:eslint": "eslint --ignore-path .gitignore --ext .js,.vue .",
+    "test:lint:stylelint": "stylelint 'src/**/*.@(?(s)?(a|c)ss|vue|html)' --config ./.stylelintrc.js"
   },
   "dependencies": {
     "babel-runtime": "6.18.0",

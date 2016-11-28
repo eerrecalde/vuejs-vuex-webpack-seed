@@ -82,7 +82,7 @@ module.exports = merge(webpackBaseConfig, {
       name: 'vendor',
       minChunks(module) {
         // any required modules inside node_modules are extracted to vendor
-        return (module.resource && module.resource.indexOf(path.nodeModules.root) === 0);
+        return (module.resource && module.resource.indexOf(path.nodeModules) === 0);
       },
     }),
     // extract webpack runtime and module manifest to its own file in order to
