@@ -35,7 +35,8 @@
 <script>
 
 import { mapGetters } from 'vuex'
-// import alertify from 'alertify-js'
+
+let alertify
 
 function getCourse(courses, id) {
   return courses.filter(course => id === course.id)[0]
@@ -61,10 +62,8 @@ export default {
   beforeMount() {
     this.fetchAuthors()
     this.fetchCourses()
-    // console.log(this.$store.state.courseStore.courses)
-    // if (this.$route.params.id) {
-    //   this.fetchCourse(this.$route.params.id)
-    // }
+    /* eslint global-require: 0 */
+    alertify = require('alertify-js')
   },
   methods: {
     fetchAuthors() {
@@ -74,9 +73,13 @@ export default {
       return this.$store.dispatch('FETCH_COURSES')
     },
     saveCourse() {
-      console.log('THIS', this.course)
       this.$store.dispatch('SAVE_COURSE', { course: this.course })
+      alertify.success('Course Saved')
     },
   },
 }
 </script>
+<style lang="scss">
+  @import '../../node_modules/alertify-js/themes/alertify.core.css';
+  @import '../../node_modules/alertify-js/themes/alertify.default.css';
+</style>

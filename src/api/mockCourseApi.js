@@ -96,8 +96,6 @@ class CourseApi {
           courses.push(course)
         }
 
-        console.log('All good', courses)
-
         resolve(course)
       }, delay)
     })

@@ -23,7 +23,6 @@ export default {
     },
 
     SAVE_COURSE: ({ commit, state }, { course }) => {
-      console.log('000', course)
       return commit('SET_COURSE', { course })
     },
 
@@ -32,7 +31,6 @@ export default {
   mutations: {
     SET_COURSES: (state, { courses }) => {
       state.courses = courses
-      // console.log(state)
     },
 
     SET_COURSE: (state, { course }) => {
@@ -40,13 +38,9 @@ export default {
         let tmp = c
         if (c.id === course.id) {
           tmp = course
-          console.log('FOUND', c)
         }
         return tmp
       })
-      console.log('CC', courses2, course)
-      // state.courses = courses
-      // console.log(state)
     },
   },
 

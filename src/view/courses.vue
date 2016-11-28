@@ -31,8 +31,8 @@ export default {
     Course,
   },
   beforeMount() {
-    // console.log(this.$store.state.courses.length)
     this.fetchCourses()
+    const t = require('alertify-js')
   },
   methods: {
     fetchCourses() {

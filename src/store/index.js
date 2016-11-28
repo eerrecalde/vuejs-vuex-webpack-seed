@@ -16,12 +16,10 @@ const store = new Vuex.Store({
   mutations: {
     BEGIN_AJAX_CALL: state => {
       state.ajaxCallInProgress += 1
-      console.log('state.ajaxCallInProgress', state.ajaxCallInProgress)
     },
 
     AJAX_CALL_FINISHED: state => {
       state.ajaxCallInProgress -= 1
-      console.log('state.ajaxCallInProgress', state.ajaxCallInProgress)
     },
   },
 })
