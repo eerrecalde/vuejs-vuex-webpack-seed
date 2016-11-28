@@ -35,7 +35,7 @@
 <script>
 
 import { mapGetters } from 'vuex'
-import alertify from 'alertify-js'
+// import alertify from 'alertify-js'
 
 function getCourse(courses, id) {
   return courses.filter(course => id === course.id)[0]
@@ -76,12 +76,7 @@ export default {
     saveCourse() {
       console.log('THIS', this.course)
       this.$store.dispatch('SAVE_COURSE', { course: this.course })
-      alertify.success('Course Saved')
     },
   },
 }
 </script>
-<style lang="scss">
-  @import '../../node_modules/alertify-js/themes/alertify.core.css';
-  @import '../../node_modules/alertify-js/themes/alertify.default.css';
-</style>

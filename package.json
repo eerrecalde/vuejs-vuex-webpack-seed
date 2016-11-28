@@ -21,6 +21,7 @@
     "test:lint:stylelint": "stylelint 'src/**/*.@(?(s)?(a|c)ss|vue|html)' --config ./.stylelintrc.js"
   },
   "dependencies": {
+    "alertify-js": "0.3.12",
     "babel-runtime": "6.18.0",
     "vue": "2.1.3",
     "vue-router": "2.0.3",
