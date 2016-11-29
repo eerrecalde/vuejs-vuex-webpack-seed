@@ -8,7 +8,16 @@ const path = require('../config/path');
 
 module.exports = function devMiddleware(app, onServerUpdate, onClientUpdate) {
   // setup on the fly compilation + hot-reload
-  webpackClientConfig.entry.app = ['webpack-hot-middleware/client', webpackClientConfig.entry.app];
+  if (Array.isArray(webpackClientConfig.entry)) {
+    webpackClientConfig.entry = ['webpack-hot-middleware/client', ...webpackClientConfig.entry];
+  } else if (typeof webpackClientConfig.entry === 'string') {
+    webpackClientConfig.entry = ['webpack-hot-middleware/client', webpackClientConfig.entry];
+  } else {
+    webpackClientConfig.entry = [
+      'webpack-hot-middleware/client',
+      ...Object.keys(webpackClientConfig.entry).map(key => webpackClientConfig.entry[key]),
+    ];
+  }
 
   // Setup client hot reload server
   const clientCompiler = webpack(webpackClientConfig);

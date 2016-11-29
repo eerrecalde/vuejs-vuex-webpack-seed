@@ -32,7 +32,6 @@ export default {
   },
   beforeMount() {
     this.fetchCourses()
-    const t = require('alertify-js')
   },
   methods: {
     fetchCourses() {

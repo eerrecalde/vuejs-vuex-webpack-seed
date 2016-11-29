@@ -22,9 +22,7 @@ export default {
       })
     },
 
-    SAVE_COURSE: ({ commit, state }, { course }) => {
-      return commit('SET_COURSE', { course })
-    },
+    SAVE_COURSE: ({ commit, state }, { course }) => commit('SET_COURSE', { course }),
 
   },
 
@@ -34,7 +32,7 @@ export default {
     },
 
     SET_COURSE: (state, { course }) => {
-      const courses2 = state.courses.map(c => {
+      state.courses.map(c => {
         let tmp = c
         if (c.id === course.id) {
           tmp = course
